@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<form method="post" asp-action="Upload" asp-controller="Home" enctype="multipart/form-data" class="dropzone" id="photo-dropzone">
+     <div class="fallback">
+        <input name="files" type="file" multiple />
+    </div>
+</form>
+
+
+<div class="row">
+   @foreach (var photo in ViewBag.photos) {
+    <div class="col-sm-6 col-md-4">
+        
+        <div class="thumbnail">
+        <img src="uploads/@photo.Thumbnail">
+        <div class="caption">
+            <h3></h3>
+            <p> @foreach (var label in photo.Labels) {
+                @string.Format("#{0} ", label.Description.Replace(" ","")) 
+                } </p>
+            <a href="#" class="btn btn-primary btn-ale" role="button"><i class="glyphicon glyphicon-zoom-in"></i></a>             
+                <form method="post" asp-action="Delete" asp-controller="Home" style="display: inline-block" >
+                    <input type="hidden" name="photoId" value="@photo.PhotoId" />
+                    <button class="btn btn-danger" type="submit"><i class="glyphicon glyphicon-trash"></i></button>
+                </form>
+             
+        </div>
+        </div>
+    
+    </div>
+   }
+</div>
+
+
