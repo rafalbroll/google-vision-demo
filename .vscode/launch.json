@@ -31,7 +31,7 @@
             },
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development",
-                "GOOGLE_APPLICATION_CREDENTIALS": "venture-devs-ccd12ccb3b00.json"
+                "GOOGLE_APPLICATION_CREDENTIALS": "api-credential.json"
             },
             "sourceFileMap": {
                 "/Views": "${workspaceRoot}/Views"
