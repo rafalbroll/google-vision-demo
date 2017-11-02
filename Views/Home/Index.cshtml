@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    @model IEnumerable<Photo>
 }
 
 <form method="post" asp-action="Upload" asp-controller="Home" enctype="multipart/form-data" class="dropzone" id="photo-dropzone">
@@ -8,10 +9,12 @@
     </div>
 </form>
 
+<div id="hashtagsFilterPlaceholder"></div>
+
 
 <div class="row">
-   @foreach (var photo in ViewBag.photos) {
-    <div class="col-sm-6 col-md-4">
+   @foreach (var photo in Model) {
+    <div class="col-sm-6 col-md-4" data-hashtags="">
         
         <div class="thumbnail">
         <img src="uploads/@photo.Thumbnail">
@@ -20,7 +23,7 @@
             <p> @foreach (var label in photo.Labels) {
                 @string.Format("#{0} ", label.Description.Replace(" ","")) 
                 } </p>
-            <a href="#" class="btn btn-primary btn-ale" role="button"><i class="glyphicon glyphicon-zoom-in"></i></a>             
+            <button class="btn btn-primary btn-ale" data-toggle="modal" data-target="#previewModal"><i class="glyphicon glyphicon-zoom-in"></i></button>             
                 <form method="post" asp-action="Delete" asp-controller="Home" style="display: inline-block" >
                     <input type="hidden" name="photoId" value="@photo.PhotoId" />
                     <button class="btn btn-danger" type="submit"><i class="glyphicon glyphicon-trash"></i></button>
@@ -34,3 +37,21 @@
 </div>
 
 
+
+<!-- Modal -->
+<div class="modal fade" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

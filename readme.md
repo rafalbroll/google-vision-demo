@@ -12,9 +12,15 @@
 *(in development environment, for production use just change the ASPNETCORE_ENVIRONMENT variable for Production)*
 
 
+
 1. Use Docker:
 
 > docker run -p 8000:80 -e "ASPNETCORE_URLS=http://+:80" -e "GOOGLE_APPLICATION_CREDENTIALS=api-credential.json" -e "ASPNETCORE_ENVIRONMENT=Development" -v `pwd`:/app  -w /app  -it --rm microsoft/dotnet
+
+when in docker:
+> dotnet restore
+> dotnet build
+> dotnet run
 
 
 1. in visual studio code :

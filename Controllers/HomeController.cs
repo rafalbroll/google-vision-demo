@@ -26,13 +26,14 @@ namespace app.Controllers
         public IActionResult Index()
         {
 
+           IEnumerable<Photo> photos;
            using (var dbContext = new VisionDbContext() ) {
-                ViewBag.photos = dbContext.Photos
+                photos = dbContext.Photos
                                 .Include(p => p.Labels)
                                 .ToList();               
            }
 
-            return View();
+            return View(photos);
         }
 
 

@@ -5,3 +5,9 @@ Dropzone.options.photoDropzone = {
       window.location.reload();
     }
   };
+
+  $(function() {
+    
+        $.filtrify("thumbnailsContainer", "hashtagsFilterPlaceholder");
+    
+    });
