@@ -2,9 +2,9 @@
 
 
 ## Prerequisites:
-* store google cloud API credentials in api-credential.json file (in the application root)
+* you have to store google cloud API credentials in api-credential.json file (in the application root)
 * directory wwwroot/uploads must be writable
-* the applicatiom must has the permission to create photos.db file in the app root (SQLite database)
+* the application must have the permission to create photos.db file in the application root directory (SQLite database)
 
 
 
