@@ -1,14 +1,14 @@
-#How to run it:
+# How to run it:
 
 
-##Prerequisites:
+## Prerequisites:
 * store google cloud API credentials in api-credential.json file (in the application root)
 * directory wwwroot/uploads must be writable
 * the applicatiom must has the permission to create photos.db file in the app root (SQLite database)
 
 
 
-##How to run it:
+## How to run it:
 *(in development environment, for production use just change the ASPNETCORE_ENVIRONMENT variable for Production)*
 
 
@@ -19,7 +19,9 @@
 
 when in docker:
 > dotnet restore
+
 > dotnet build
+
 > dotnet run
 
 
