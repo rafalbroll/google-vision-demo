@@ -9,21 +9,23 @@
     </div>
 </form>
 
-<div id="hashtagsFilterPlaceholder"></div>
 
 
-<div class="row">
+<div class="row" id="thumbnailsContainer">
    @foreach (var photo in Model) {
-    <div class="col-sm-6 col-md-4" data-hashtags="">
+
+    <div class="col-sm-6 col-md-4" data-hashtags="@{String.Join(',',photo.Labels.Select(l=>l.Description));}">
         
         <div class="thumbnail">
         <img src="uploads/@photo.Thumbnail">
         <div class="caption">
             <h3></h3>
-            <p> @foreach (var label in photo.Labels) {
+            <p class="hashtags"> @foreach (var label in photo.Labels) {
                 @string.Format("#{0} ", label.Description.Replace(" ","")) 
                 } </p>
-            <button class="btn btn-primary btn-ale" data-toggle="modal" data-target="#previewModal"><i class="glyphicon glyphicon-zoom-in"></i></button>             
+
+            <a asp-action="GetPhoto" asp-controller="Home" asp-route-id="@photo.PhotoId" class="btn btn-primary btn-ale" 
+             data-toggle="modal" data-remote="false" data-target="#previewModal"><i class="glyphicon glyphicon-zoom-in"></i></a>             
                 <form method="post" asp-action="Delete" asp-controller="Home" style="display: inline-block" >
                     <input type="hidden" name="photoId" value="@photo.PhotoId" />
                     <button class="btn btn-danger" type="submit"><i class="glyphicon glyphicon-trash"></i></button>
@@ -39,12 +41,12 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="previewModal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel">Photo details</h4>
       </div>
       <div class="modal-body">
         ...
@@ -55,3 +57,8 @@
     </div>
   </div>
 </div>
+
+<script id="previewTemplate" type="text/x-jsrender">
+ <p><img src="uploads/{{:filename}}" class="preview-photo"></p>
+ <p> {{for labels}}#{{:description}} {{/for}} </p>
+</script>

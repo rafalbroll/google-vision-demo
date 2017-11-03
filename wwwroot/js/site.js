@@ -6,8 +6,16 @@ Dropzone.options.photoDropzone = {
     }
   };
 
-  $(function() {
-    
-        $.filtrify("thumbnailsContainer", "hashtagsFilterPlaceholder");
-    
-    });
+ $(function(){
+  $("#thumbnailsContainer").on('click', '[data-target="#previewModal"]', function(){
+      
+      $.get($(this).attr('href'), function(data) {
+        var tmpl = $.templates("#previewTemplate");
+
+        $('#previewModal .modal-body').html(
+          tmpl.render(data)
+        );
+      })
+  });
+
+ });

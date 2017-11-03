@@ -33,3 +33,15 @@
         display: none;
     }
 }
+
+#photo-dropzone {
+    margin-bottom: 20px;
+}
+
+#previewModal .preview-photo {
+    max-width:100%;
+}
+
+.hashtags {
+    min-height: 60px;
+}
