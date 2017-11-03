@@ -13,7 +13,7 @@
 
 
 
-l. Use Docker:
+### Use Docker:
 
 > docker run -p 8000:80 -e "ASPNETCORE_URLS=http://+:80" -e "GOOGLE_APPLICATION_CREDENTIALS=api-credential.json" -e "ASPNETCORE_ENVIRONMENT=Development" -v `pwd`:/app  -w /app  -it --rm microsoft/dotnet
 
@@ -25,7 +25,7 @@ when in docker:
 > dotnet run
 
 
-l. in visual studio code :
+### in visual studio code :
 just run it as it is because the configuration is already there in .vscode/launch.json file
 
 
